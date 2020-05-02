@@ -23,3 +23,4 @@ public class DebugExercise3 {
         System.out.println(countTurnips(in));
     }
 }
+
