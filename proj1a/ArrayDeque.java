@@ -25,7 +25,7 @@ public class ArrayDeque<T> {
 
     /** half the length of the items */
     public void downsize() {
-      resize(size * 2);
+        resize(size * 2);
     }
 
     /** if the items are full, then increase the length of the array */
@@ -79,7 +79,10 @@ public class ArrayDeque<T> {
 
     /** print the deqeu */
     public void printDeque() {
-
+        for (int i = plusOne(nextFirst); i != nextLast; i = plusOne(i)) {
+            System.out.print(items[i] + " ");
+        }
+        System.out.println();
     }
 
     /** remove the first item from the deque 8 */
@@ -127,5 +130,15 @@ public class ArrayDeque<T> {
     /** decide whether or not, this array need to half the length */
     public boolean isEfficiency() {
         return size / items.length >= 0.25 && items.length >= 16;
+    }
+
+    /** create a copy of a given array */
+    public ArrayDeque(ArrayDeque other) {
+        T[] copyTo = (T[]) new Object[other.items.length];
+        size = other.size;
+        nextLast = other.nextLast;
+        nextFirst = other.nextFirst;
+
+        System.arraycopy(other,0,copyTo,0,other.size);
     }
 }
